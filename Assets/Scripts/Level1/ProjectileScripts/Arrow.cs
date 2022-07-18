@@ -13,9 +13,9 @@ public class Arrow : MonoBehaviour
         this.transform.Translate(new Vector3(1f, 0f, 0f) * speed * Time.deltaTime, null);
     }
 
-    private void destroy()
+    public void destroy()
     {
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 
     public int doDamage()

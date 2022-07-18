@@ -46,8 +46,8 @@ public class Enemy : MonoBehaviour, Product
                 case "Arrow":
                     arrow = collision.gameObject.GetComponent<Arrow>();
                     this.takeDamage(arrow.doDamage());
-                    Destroy(arrow.gameObject);
-                    break;
+                    arrow.destroy();                    
+					break;
 
 				case "Towers":
 					isMoving = false;
