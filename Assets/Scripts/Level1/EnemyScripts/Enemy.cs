@@ -14,7 +14,13 @@ public class Enemy : MonoBehaviour, Product
 
     private Arrow arrow;
 
+    private Barrel barrel;
+
+    private Cannon cannon;
+
 	private Tower tower;
+
+    private Gauss gauss;
 
 	private Enemy e;
 
@@ -47,6 +53,24 @@ public class Enemy : MonoBehaviour, Product
                     arrow = collision.gameObject.GetComponent<Arrow>();
                     this.takeDamage(arrow.doDamage());
                     arrow.destroy();                    
+					break;
+
+                case "Barrel":
+                    barrel = collision.gameObject.GetComponent<Barrel>();
+                    this.takeDamage(barrel.doDamage());
+                    barrel.destroy();                    
+					break;
+
+                case "Cannon":
+                    cannon = collision.gameObject.GetComponent<Cannon>();
+                    this.takeDamage(cannon.doDamage());
+                    cannon.destroy();                    
+					break;
+
+                case "Gauss":
+                    gauss = collision.gameObject.GetComponent<Gauss>();
+                    this.takeDamage(gauss.doDamage());
+                    gauss.destroy();                    
 					break;
 
 				case "Towers":

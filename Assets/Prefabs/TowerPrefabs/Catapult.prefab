@@ -132,12 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11391d9fe5863b4588583b4fe3a7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectiles: {fileID: 0}
-  arrow: {fileID: 0}
-  rateOfFire: 0
-  fireTime: 0
-  damage: 0
-  health: 0
+  Projectiles: {fileID: 1812427774819054357}
+  arrow: {fileID: 6305709974913367207, guid: 6558496e1cbfb2a459b5c90a38a68096, type: 3}
+  rateOfFire: 3
+  fireTime: 1
+  damage: 1
+  health: 10
 --- !u!1001 &2292375180940597637
 PrefabInstance:
   m_ObjectHideFlags: 0
