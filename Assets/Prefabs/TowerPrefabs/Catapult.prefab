@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11391d9fe5863b4588583b4fe3a7031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectiles: {fileID: 7529525903320254482, guid: 17fbc106ea92af940a21c60660000c48, type: 3}
-  arrow: {fileID: 7529525903320254482, guid: 17fbc106ea92af940a21c60660000c48, type: 3}
+  Projectiles: {fileID: 1812427774819054357}
+  arrow: {fileID: 6305709974913367207, guid: 6558496e1cbfb2a459b5c90a38a68096, type: 3}
   rateOfFire: 2
   fireTime: 2
   damage: 10
