@@ -16,6 +16,8 @@ public class TowerSpawner : MonoBehaviour
 
     [SerializeField] private GameObject towers = null;
 
+    public GameObject player;
+
     private TowerFactory[] TowerFactoryArray = new TowerFactory[5];
 
     private bool canBuildTower = false;
@@ -25,8 +27,10 @@ public class TowerSpawner : MonoBehaviour
     private bool canSellTower = false;
     
     private SlotGrid sg;
+    
 
     private int layermask;
+    private int towerCost;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +61,7 @@ public class TowerSpawner : MonoBehaviour
                     int j = (int) objectHit.position.y;
                     if (sg.setSlot(i,j)){
                         spawnTower(objectHit, i, j);
+                        player.GetComponent<Player>().updateCash(towerCost * -1);
                     }
                 }
             }
@@ -82,32 +87,56 @@ public class TowerSpawner : MonoBehaviour
 
     public void BallistaTowerButton()
     {
-        canBuildTower = true;
-        towerType = 0;
+        towerCost = StandardTowerPrefab.cost;
+        if (player.GetComponent<Player>().hasCashRequired(towerCost))
+        {
+            canBuildTower = true;
+            towerType = 0;
+        }
     }
 
     public void RapidFireTowerButton()
     {
-        canBuildTower = true;
-        towerType = 1;
+        towerCost = RapidFireTowerPrefab.cost;
+        if (player.GetComponent<Player>().hasCashRequired(towerCost))
+        {
+            canBuildTower = true;
+
+            towerType = 1;
+        }
     }
 
     public void SplashTowerButton()
     {
-        canBuildTower = true;
-        towerType = 2;
+        towerCost = SplashTowerPrefab.cost;
+        if (player.GetComponent<Player>().hasCashRequired(towerCost))
+        {
+            canBuildTower = true;
+
+            towerType = 2;
+        }
     }
 
     public void GaussTowerButton()
     {
-        canBuildTower = true;
-        towerType = 3;
+        towerCost = GaussTowerPrefab.cost;
+        if (player.GetComponent<Player>().hasCashRequired(towerCost))
+        {
+            canBuildTower = true;
+
+            towerType = 3;
+        }
     }
 
     public void RayTowerButton()
     {
-        canBuildTower = true;
-        towerType = 4;
+        towerCost = RayTowerPrefab.cost;
+        if (player.GetComponent<Player>().hasCashRequired(towerCost))
+        {
+            canBuildTower = true;
+
+            towerType = 4;
+        }
     }
 
     public void spawnTower(Transform coord, int i, int j)

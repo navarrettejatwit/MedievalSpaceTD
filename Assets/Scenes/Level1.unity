@@ -592,6 +592,7 @@ MonoBehaviour:
   GaussTowerPrefab: {fileID: -4524700958210760071, guid: dd7d78736c575254ab67fc88c5f4750b, type: 3}
   RayTowerPrefab: {fileID: -554803671788499611, guid: 74df58cb5b376e1468191163414ca296, type: 3}
   towers: {fileID: 1303118626}
+  player: {fileID: 340661077}
 --- !u!4 &116896465
 Transform:
   m_ObjectHideFlags: 0

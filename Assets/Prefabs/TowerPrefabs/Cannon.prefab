@@ -207,3 +207,4 @@ MonoBehaviour:
   fireTime: 0
   damage: 100
   health: 100
+  cost: 250

@@ -15,13 +15,13 @@ public class Tower : MonoBehaviour, Product
     [SerializeField] private int damage = 0;
     
     [SerializeField] private int health = 0;
-    private int cost;
 
     private int layermask;
 
     private Ray ray;
 
     private Enemy e = null;
+    public int cost;
 
     void Awake(){
         layermask = LayerMask.GetMask("Enemies");
