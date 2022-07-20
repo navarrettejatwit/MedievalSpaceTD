@@ -56,5 +56,16 @@ public class Player : MonoBehaviour
         playerCash += cashChange;
 
     }
+    public bool hasCashRequired(int cashChange)
+    {
+        if (playerCash - cashChange >= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     
 }

@@ -138,6 +138,7 @@ MonoBehaviour:
   fireTime: 2
   damage: 10
   health: 100
+  cost: 300
 --- !u!1001 &2292375180940597637
 PrefabInstance:
   m_ObjectHideFlags: 0
