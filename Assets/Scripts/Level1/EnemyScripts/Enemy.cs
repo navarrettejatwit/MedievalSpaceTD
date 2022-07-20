@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, Product
     [SerializeField] private int damage;
 
     [SerializeField] private int health;
+    public GameObject player;
 
     private Player p;
 
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour, Product
 	private Tower tower;
 
 	private Enemy e;
+    public int reward;
 
     private bool isMoving = true;
 
@@ -31,6 +33,10 @@ public class Enemy : MonoBehaviour, Product
 			isMoving = true;
 		}
         moving();
+    }
+    void Awake()
+    {
+        player = GameObject.Find("Player");
     }
     
     private void OnTriggerEnter(Collider collision)
@@ -82,6 +88,7 @@ public class Enemy : MonoBehaviour, Product
         health -= damage;
         if (health <= 0)
         {
+            player.GetComponent<Player>().updateCash(this.reward);
             Destroy(this.gameObject);
         }
     }
@@ -90,6 +97,5 @@ public class Enemy : MonoBehaviour, Product
     {
         return this.damage;
     }
-    
 }
 
