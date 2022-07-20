@@ -7,8 +7,6 @@ public class UserInterface : MonoBehaviour
 {
     [SerializeField] private GameObject PauseMenuUI = null;
 
-    [SerializeField] private GameObject GameOverMenuUI = null;
-    
     public void ResumeButton()
     {
         PauseMenuUI.SetActive(false);

@@ -8,6 +8,9 @@ TagManager:
   - Arrow
   - Enemy
   - Towers
+  - Barrel
+  - Cannon
+  - Gauss
   layers:
   - Default
   - TransparentFX
