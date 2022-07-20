@@ -125,10 +125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectiles: {fileID: 1607830861630778356}
   arrow: {fileID: 7413212863924197183, guid: ee4d4f981914ddf4087ca3495256c5e7, type: 3}
-  rateOfFire: 3
-  fireTime: 1
-  damage: 1
-  health: 0
+  rateOfFire: 5
+  fireTime: 5
+  damage: 10
+  health: 100
 --- !u!4 &2097543877058228558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f54f102f5f6f1341aca37cfa4662de6, type: 3}

@@ -204,6 +204,7 @@ MonoBehaviour:
   Projectiles: {fileID: 7619018234131937006}
   arrow: {fileID: 3325932240803796648, guid: 435ea73a0ca48194d882d8fcd133060c, type: 3}
   rateOfFire: 3
-  fireTime: 1
-  damage: 1
-  health: 0
+  fireTime: 0
+  damage: 100
+  health: 100
+

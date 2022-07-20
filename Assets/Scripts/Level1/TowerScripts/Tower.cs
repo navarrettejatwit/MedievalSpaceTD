@@ -8,7 +8,6 @@ public class Tower : MonoBehaviour, Product
     [SerializeField] private GameObject Projectiles = null;
     
     [SerializeField] private GameObject arrow = null;
-        
     [SerializeField] private float rateOfFire = 0;
 
     [SerializeField] private float fireTime = 0;
@@ -16,10 +15,13 @@ public class Tower : MonoBehaviour, Product
     [SerializeField] private int damage = 0;
     
     [SerializeField] private int health = 0;
+    private int cost;
 
     private int layermask;
 
     private Ray ray;
+
+    private GameObject a;
 
     private Enemy e = null;
 
