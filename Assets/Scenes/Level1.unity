@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -66.617676, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1575,6 +1575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   income: 1
+  playerCash: 1000
   GameOverMenu: {fileID: 1295005965}
   IncomeText: {fileID: 432380591}
   HealthText: {fileID: 1091331341}
@@ -4480,10 +4481,13 @@ MonoBehaviour:
   EnemyPrefab1: {fileID: 1679997052220172755, guid: be1f4135ae8c591469eeee1910d36fe1, type: 3}
   enemies: {fileID: 319320843}
   EnemiesAtStart: 20
-  wave: 1
+  wave: 0
   timeBetween: 10
   spawnTime: 10
   timeBeforeNextWave: 60
+  enemyCount: {fileID: 47752073}
+  waveCountUI: {fileID: 1209266134}
+  waveCD: {fileID: 803348477}
 --- !u!4 &1243086798
 Transform:
   m_ObjectHideFlags: 0

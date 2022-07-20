@@ -13,13 +13,16 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private int EnemiesAtStart = 0;
 
-    [SerializeField] private int wave = 1; 
+    [SerializeField] public int wave = 0; 
 
     [SerializeField] private float timeBetween = 0;
 
     [SerializeField] private float spawnTime = 0;
 
     [SerializeField] private float timeBeforeNextWave = 60;
+    public TextMeshProUGUI enemyCount;
+    public TextMeshProUGUI waveCountUI;
+    public TextMeshProUGUI waveCD;
 
     private int EnemyPerWave = 0;
 
@@ -52,18 +55,24 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnTime -= Time.deltaTime;
         spawnWave();
+        enemyCount.text = "Enemies: " + enemies.transform.childCount;
+      
     }
-    
+
     public void spawnWave()
     {
+        waveCD.text = "Next wave in: " + Mathf.Round(spawnTime);
         if (spawnTime <= 0f)
         {
+            wave++;
+            waveCountUI.text = "Wave: " + wave;
             for (int i = 0; i < EnemyPerWave; i++)
             {
                 getSpawnPoint();
                 getEnemy(SpawnPoint);
+
+                spawnTime = timeBetween;
             }
-            spawnTime = timeBetween;
         }
     }
 
