@@ -15,6 +15,7 @@ public class Tower : MonoBehaviour, Product
     [SerializeField] private int damage = 0;
     
     [SerializeField] private int health = 0;
+    private int cost;
 
     private int layermask;
 

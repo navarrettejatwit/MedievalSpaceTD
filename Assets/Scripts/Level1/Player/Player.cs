@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private int health = 0;
     [SerializeField] private int income = 0;
+    public int playerCash = 1000;
     [SerializeField] private GameObject GameOverMenu = null;
     [SerializeField] private TextMeshProUGUI IncomeText = null;
     [SerializeField] private TextMeshProUGUI HealthText = null;
@@ -50,4 +51,10 @@ public class Player : MonoBehaviour
     {
         income = income + 1;
     }
+    public void updateCash(int cashChange)
+    {
+        playerCash += cashChange;
+
+    }
+    
 }

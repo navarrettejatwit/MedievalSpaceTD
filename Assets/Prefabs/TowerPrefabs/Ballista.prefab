@@ -130,8 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectiles: {fileID: 894691663274531070}
   arrow: {fileID: 7529525903320254482, guid: 17fbc106ea92af940a21c60660000c48, type: 3}
-  rateOfFire: 20
-  fireTime: 20
+  rateOfFire: 1
+  fireTime: 1
   damage: 1
   health: 10
 --- !u!1001 &1006477223556908522
