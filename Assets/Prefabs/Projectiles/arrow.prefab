@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7517390139973323464}
   - component: {fileID: 3170557382102595210}
   - component: {fileID: 1476870650318922074}
-  - component: {fileID: 5347752086256658916}
   - component: {fileID: -1693847303881046852}
+  - component: {fileID: -3010964928842932548}
   m_Layer: 0
   m_Name: arrow
-  m_TagString: Arrow
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5347752086256658916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7529525903320254482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aaf2c05579a3a446b0efa1831c1038a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  damage: 1
 --- !u!65 &-1693847303881046852
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -113,3 +99,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06850001, y: 0.0685, z: 1.3800004}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3010964928842932548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529525903320254482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91c5a03f198d44498dec161f4739fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  damage: 1

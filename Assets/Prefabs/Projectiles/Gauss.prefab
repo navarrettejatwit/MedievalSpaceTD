@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5274690745125144113}
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
-  - component: {fileID: -2743863038618826719}
   - component: {fileID: 7753966988792194022}
+  - component: {fileID: 20346377874558009}
   m_Layer: 0
   m_Name: Gauss
-  m_TagString: Gauss
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-2743863038618826719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7413212863924197183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fdc12fa7651a6f41934a55d03249509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
-  damage: 1
 --- !u!65 &7753966988792194022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,3 +100,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.39999998, y: 1.9999999, z: 0.39999998}
   m_Center: {x: 0, y: 0.99999994, z: 0}
+--- !u!114 &20346377874558009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7413212863924197183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91c5a03f198d44498dec161f4739fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  damage: 5
