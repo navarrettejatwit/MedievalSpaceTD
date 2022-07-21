@@ -16,12 +16,12 @@ public class Enemy : MonoBehaviour, Product
     private Projectile projectile;
 
     private Enemy e;
-    private Barrel barrel;
-    private Cannon cannon;
-    private Tower tower;
-    private Gauss gauss;
-    private Enemy e;
+    private GameObject barrel;
+    private GameObject cannon;
+    private GameObject tower;
+    private GameObject gauss;
     public int reward;
+    private bool hasGivenCash = false;
 
     private bool isMoving = true;
 
@@ -91,7 +91,11 @@ public class Enemy : MonoBehaviour, Product
         health -= damage;
         if (health <= 0)
         {
-            player.GetComponent<Player>().updateCash(this.reward);
+            if (!hasGivenCash)
+            {
+                player.GetComponent<Player>().updateCash(this.reward);
+                hasGivenCash = true;
+            }
             Destroy(this.gameObject);
         }
     }

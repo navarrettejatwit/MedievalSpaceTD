@@ -71,12 +71,14 @@ public class TowerSpawner : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, 10f, layermask))
                 {
                     Transform objectHit = hit.transform;
+                    int cashBack = objectHit.GetComponent<Tower>().cost / 2;
                     int i = (int) objectHit.position.x;
                     int j = (int) objectHit.position.y;
                     //to do get towers income at reduced income price.
                     bool notFilled = sellTower();
                     //to do object pool get rif of Destroy.
                     Destroy(hit.transform.gameObject);
+                    player.GetComponent<Player>().updateCash(cashBack);
                     canSellTower = false;
                 }
             }

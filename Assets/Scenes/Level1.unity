@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4617,7 +4617,7 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 6616127243192918389, guid: 6dc19d54fdd38a04185a0d810908356e, type: 3}
   EnemyPrefab1: {fileID: 1679997052220172755, guid: be1f4135ae8c591469eeee1910d36fe1, type: 3}
   enemies: {fileID: 319320843}
-  EnemiesAtStart: 20
+  EnemiesAtStart: 10
   wave: 0
   timeBetween: 10
   spawnTime: 10
