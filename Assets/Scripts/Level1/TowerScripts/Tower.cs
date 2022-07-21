@@ -6,13 +6,12 @@ public class Tower : MonoBehaviour, Product
 {
 
     [SerializeField] private GameObject Projectiles = null;
-    
-    [SerializeField] private GameObject arrow = null;
+
+	[SerializeField] private GameObject Projectile = null;
+
     [SerializeField] private float rateOfFire = 0;
 
     [SerializeField] private float fireTime = 0;
-    
-    [SerializeField] private int damage = 0;
     
     [SerializeField] private int health = 0;
 
@@ -45,7 +44,7 @@ public class Tower : MonoBehaviour, Product
         {
             fireTime -= Time.deltaTime;
             if(fireTime <= 0f){
-                Instantiate(arrow, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.Euler(0f, 90f,0f), Projectiles.transform);
+                Instantiate(Projectile, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.Euler(0f, 90f,0f), Projectiles.transform);
                 fireTime = rateOfFire;
             }
         }
@@ -70,10 +69,6 @@ public class Tower : MonoBehaviour, Product
         }
     }
 
-    private int doDamage()
-    {
-        return this.damage;
-    }
 }
 
 

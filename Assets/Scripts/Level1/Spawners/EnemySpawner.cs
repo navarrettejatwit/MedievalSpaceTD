@@ -87,7 +87,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void getEnemy(Transform SpawnPoint)
     {
-        int j = Random.Range(1, EnemyFactories.Length);
+        j = Random.Range(1, EnemyFactories.Length);
         EnemyFactories[j].setSpawnPoint(SpawnPoint);
         e = (Enemy) EnemyFactories[j].produce();                        
         e.transform.rotation = Quaternion.Euler(new Vector3(0, 270, 90));

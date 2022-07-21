@@ -133,10 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectiles: {fileID: 1812427774819054357}
-  arrow: {fileID: 6305709974913367207, guid: 6558496e1cbfb2a459b5c90a38a68096, type: 3}
-  rateOfFire: 2
-  fireTime: 2
-  damage: 10
+  Projectile: {fileID: 6305709974913367207, guid: 6558496e1cbfb2a459b5c90a38a68096, type: 3}
+  rateOfFire: 1
+  fireTime: 0.5
   health: 100
   cost: 300
 --- !u!1001 &2292375180940597637

@@ -124,11 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectiles: {fileID: 1607830861630778356}
-  arrow: {fileID: 7413212863924197183, guid: ee4d4f981914ddf4087ca3495256c5e7, type: 3}
-  rateOfFire: 5
+  Projectile: {fileID: 7413212863924197183, guid: ee4d4f981914ddf4087ca3495256c5e7, type: 3}
+  rateOfFire: 15
   fireTime: 5
-  damage: 10
-  health: 100
+  health: 200
   cost: 500
 --- !u!4 &2097543877058228558 stripped
 Transform:

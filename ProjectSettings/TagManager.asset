@@ -5,12 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - EnemySpawnPoints
-  - Arrow
   - Enemy
   - Towers
-  - Barrel
-  - Cannon
-  - Gauss
+  - Projectile
   layers:
   - Default
   - TransparentFX
