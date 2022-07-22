@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject GameOverMenu = null;
     [SerializeField] private TextMeshProUGUI IncomeText = null;
     [SerializeField] private TextMeshProUGUI HealthText = null;
+    [SerializeField] private TextMeshProUGUI CashText;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
     public void updateCash(int cashChange)
     {
         playerCash += cashChange;
+        CashText.text = "Cash: " + playerCash;
 
     }
     public bool hasCashRequired(int cashChange)

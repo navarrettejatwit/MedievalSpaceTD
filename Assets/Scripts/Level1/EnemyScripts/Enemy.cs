@@ -9,12 +9,19 @@ public class Enemy : MonoBehaviour, Product
     [SerializeField] private int damage;
 
     [SerializeField] private int health;
+    public GameObject player;
 
     private Player p;
 
     private Projectile projectile;
 
     private Enemy e;
+    private GameObject barrel;
+    private GameObject cannon;
+    private GameObject tower;
+    private GameObject gauss;
+    public int reward;
+    private bool hasGivenCash = false;
 
     private bool isMoving = true;
 
@@ -29,6 +36,10 @@ public class Enemy : MonoBehaviour, Product
 			isMoving = true;
 		}
         moving();
+    }
+    void Awake()
+    {
+        player = GameObject.Find("Player");
     }
     
     private void OnTriggerEnter(Collider collision)
@@ -80,6 +91,11 @@ public class Enemy : MonoBehaviour, Product
         health -= damage;
         if (health <= 0)
         {
+            if (!hasGivenCash)
+            {
+                player.GetComponent<Player>().updateCash(this.reward);
+                hasGivenCash = true;
+            }
             Destroy(this.gameObject);
         }
     }
@@ -88,6 +104,5 @@ public class Enemy : MonoBehaviour, Product
     {
         return this.damage;
     }
-    
 }
 
