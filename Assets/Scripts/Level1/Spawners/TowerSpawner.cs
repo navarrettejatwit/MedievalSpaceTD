@@ -14,22 +14,38 @@ public class TowerSpawner : MonoBehaviour
 
     [SerializeField] private Tower RayTowerPrefab;
 
-    [SerializeField] private GameObject towers = null;
+    [SerializeField] private GameObject towers;
+
+    [SerializeField] private GameObject BallistaPool;
+    
+    [SerializeField] private GameObject CatapultPool;
+    
+    [SerializeField] private GameObject CannonPool;
+    
+    [SerializeField] private GameObject GaussPool;
+    
+    [SerializeField] private GameObject WizardPool;
 
     public GameObject player;
 
     private TowerFactory[] TowerFactoryArray = new TowerFactory[5];
+
+    private GameObject[] TowerPool = new GameObject[5];
+
+    private GameObject currentTower;
 
     private bool canBuildTower = false;
 
     private int towerType = 0;
 
     private bool canSellTower = false;
+
+    private int cashBack;
     
     private SlotGrid sg;
     
-
     private int layermask;
+    
     private int towerCost;
 
     // Start is called before the first frame update
@@ -37,11 +53,16 @@ public class TowerSpawner : MonoBehaviour
     {
         layermask = LayerMask.GetMask("Towers");
         sg = (SlotGrid) GameObject.Find("SlotMap").GetComponent(typeof(SlotGrid));
-        TowerFactoryArray[0] = new TowerFactory(StandardTowerPrefab, towers);
-        TowerFactoryArray[1] = new TowerFactory(RapidFireTowerPrefab, towers);
-        TowerFactoryArray[2] = new TowerFactory(SplashTowerPrefab, towers);
-        TowerFactoryArray[3] = new TowerFactory(GaussTowerPrefab, towers);
-        TowerFactoryArray[4] = new TowerFactory(RayTowerPrefab, towers);
+        TowerPool[0] = BallistaPool;
+        TowerPool[1] = CatapultPool;
+        TowerPool[2] = CannonPool;
+        TowerPool[3] = GaussPool;
+        TowerPool[4] = WizardPool;
+        TowerFactoryArray[0] = new TowerFactory(StandardTowerPrefab, BallistaPool);
+        TowerFactoryArray[1] = new TowerFactory(RapidFireTowerPrefab, CatapultPool);
+        TowerFactoryArray[2] = new TowerFactory(SplashTowerPrefab, CannonPool);
+        TowerFactoryArray[3] = new TowerFactory(GaussTowerPrefab, GaussPool);
+        TowerFactoryArray[4] = new TowerFactory(RayTowerPrefab, WizardPool);
     }
 
     // Update is called once per frame
@@ -60,7 +81,7 @@ public class TowerSpawner : MonoBehaviour
                     int i = (int) objectHit.position.x;
                     int j = (int) objectHit.position.y;
                     if (sg.setSlot(i,j)){
-                        spawnTower(objectHit, i, j);
+                        spawnTower(objectHit);
                         player.GetComponent<Player>().updateCash(towerCost * -1);
                     }
                 }
@@ -71,13 +92,11 @@ public class TowerSpawner : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, 10f, layermask))
                 {
                     Transform objectHit = hit.transform;
-                    int cashBack = objectHit.GetComponent<Tower>().cost / 2;
+                    cashBack = objectHit.GetComponent<Tower>().cost / 2;
                     int i = (int) objectHit.position.x;
                     int j = (int) objectHit.position.y;
-                    //to do get towers income at reduced income price.
                     bool notFilled = sellTower();
-                    //to do object pool get rif of Destroy.
-                    Destroy(hit.transform.gameObject);
+                    hit.transform.gameObject.SetActive(false);
                     player.GetComponent<Player>().updateCash(cashBack);
                     canSellTower = false;
                 }
@@ -141,12 +160,38 @@ public class TowerSpawner : MonoBehaviour
         }
     }
 
-    public void spawnTower(Transform coord, int i, int j)
+    private void spawnTower(Transform coord)
     {
-        TowerFactoryArray[towerType].setSpawnPoint(coord);
-        Tower NewTower = (Tower) TowerFactoryArray[towerType].produce();
-        NewTower.transform.rotation = Quaternion.Euler(270, 0, 0);
+        currentTower = getTowerFromAPool();
+        if(currentTower != null)
+        {
+            currentTower.transform.position = new Vector3(coord.position.x,coord.position.y,coord.position.z);
+            currentTower.transform.rotation = Quaternion.Euler(270f, 0f,0f);
+			currentTower.GetComponent<Tower>().resetTower();
+            currentTower.SetActive(true);
+        }
+        else
+        {
+            TowerFactoryArray[towerType].setSpawnPoint(coord);
+            Tower NewTower = (Tower) TowerFactoryArray[towerType].produce();
+            NewTower.transform.rotation = Quaternion.Euler(270, 0, 0);
+        }
         canBuildTower = false;
+    }
+
+    private GameObject getTowerFromAPool()
+    {
+        if (towers.gameObject.transform.GetChild(towerType).transform.childCount != 0)
+        {
+            for (int i = 0; i < towers.gameObject.transform.GetChild(towerType).transform.childCount; i++)
+            {
+                if (!towers.gameObject.transform.GetChild(towerType).GetChild(i).gameObject.activeInHierarchy)
+                {
+                    return towers.gameObject.transform.GetChild(towerType).GetChild(i).gameObject;
+                }
+            }
+        }
+        return null;
     }
 
     public void sellTowerButtonClicked()

@@ -9,32 +9,38 @@ public class Enemy : MonoBehaviour, Product
     [SerializeField] private int damage;
 
     [SerializeField] private int health;
-    public GameObject player;
+
+	private int originalHealth;
+
+    private GameObject player;
 
     private Player p;
 
     private Projectile projectile;
 
     private Enemy e;
-    private GameObject barrel;
-    private GameObject cannon;
-    private GameObject tower;
-    private GameObject gauss;
+
+    private Tower tower;
+
     public int reward;
+
     private bool hasGivenCash = false;
 
     private bool isMoving = true;
 
     void Start()
     {
+		originalHealth = health;
         Physics.IgnoreLayerCollision(1,5);
+		Physics.IgnoreLayerCollision(7,7);
     }
     
     void Update()
     {
-		if(e != null){
-			isMoving = true;
-		}
+        if (tower != null)
+        {
+            isMoving = tower.takeDamage(damage);
+        }
         moving();
     }
     void Awake()
@@ -49,7 +55,7 @@ public class Enemy : MonoBehaviour, Product
                 case "Player":
                     p = collision.gameObject.GetComponent<Player>();
                     p.takeDamage(damage);
-                    Destroy(this.gameObject);
+                    this.gameObject.SetActive(false);
                     break;
                 
                 case "Projectile":
@@ -59,23 +65,16 @@ public class Enemy : MonoBehaviour, Product
 					break;
 
                 case "Towers":
-					isMoving = false;
+					tower = collision.gameObject.GetComponent<Tower>();
+                    isMoving = false;
 					break;
 	
 				case "Enemy":
 					e = collision.gameObject.GetComponent<Enemy>();
-					isMoving = false;
+                    isMoving = false;
 					break;
         }
     }
-
-	public void setIsMoving(){
-			isMoving = true;
-	}
-
-	public bool getIsMoving(){
-			return isMoving;
-	}
 
     private void moving()
     {
@@ -96,7 +95,7 @@ public class Enemy : MonoBehaviour, Product
                 player.GetComponent<Player>().updateCash(this.reward);
                 hasGivenCash = true;
             }
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -104,5 +103,14 @@ public class Enemy : MonoBehaviour, Product
     {
         return this.damage;
     }
+
+	public void resetEnemy(){
+		health = originalHealth;
+		e = null;
+		tower = null;
+		projectile = null;
+		isMoving = true;
+		hasGivenCash = false;
+	}
 }
 

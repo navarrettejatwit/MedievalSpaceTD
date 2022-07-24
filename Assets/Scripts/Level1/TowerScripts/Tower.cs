@@ -7,7 +7,11 @@ public class Tower : MonoBehaviour, Product
 
     [SerializeField] private GameObject Projectiles = null;
 
+	private int ammo = 8;
+
 	[SerializeField] private GameObject Projectile = null;
+
+	private GameObject currentProjectile;
 
     [SerializeField] private float rateOfFire = 0;
 
@@ -15,60 +19,83 @@ public class Tower : MonoBehaviour, Product
     
     [SerializeField] private int health = 0;
 
+	private int originalHealth;
+
+	private float originalFireTime;
+	
+	private float originalRateOfFire;
+
     private int layermask;
 
     private Ray ray;
 
     private GameObject a;
 
-    private Enemy e = null;
     public int cost;
 
 	private GameObject munition;
 
     void Awake(){
+		GameObject temp;
+		originalHealth = health;
+		originalFireTime = fireTime;
+		originalRateOfFire = rateOfFire;
         layermask = LayerMask.GetMask("Enemies");
         ray = new Ray(this.transform.position, new Vector3(10,0,0));
+		for(int i=0;i<ammo;i++){
+			temp = Instantiate(Projectile, Projectiles.transform);
+			temp.transform.localScale = new Vector3(0.2f,0.2f,0.2f);
+			temp.SetActive(false);
+		}
     }
   
     void Update()
     {
-        if (e != null)
-        {
-            this.takeDamage(e.doDamage());
-        }
-
-        RaycastHit hit;
+	    RaycastHit hit;
         Debug.DrawRay(this.transform.position, new Vector3(10,0,0), Color.green);
         if (Physics.Raycast(ray, out hit, 10f, layermask))
         {
             fireTime -= Time.deltaTime;
             if(fireTime <= 0f){
-                Instantiate(Projectile, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.Euler(0f, 90f,0f), Projectiles.transform);
+				currentProjectile = getProjectile();
+				if (currentProjectile != null) {
+        			currentProjectile.transform.position = this.transform.position;
+        			currentProjectile.transform.rotation = Quaternion.Euler(0f, 90f,0f);
+        			currentProjectile.SetActive(true);
+    			}	
                 fireTime = rateOfFire;
             }
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.tag == "Enemy")
-        {
-            e = collision.gameObject.GetComponent<Enemy>();
-        }
-    }
-
-
-    public void takeDamage(int damage)
+    public bool takeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
         {
-            e.setIsMoving();
-            Destroy(this.gameObject);
+	        this.gameObject.SetActive(false);
+			return true;
         }
+		return false;
     }
 
+	private GameObject getProjectile()
+	{
+		for(int i = 0; i<ammo; i++)
+        {
+            if(!this.gameObject.transform.GetChild(1).GetChild(i).gameObject.activeInHierarchy)
+            {
+                return this.gameObject.transform.GetChild(1).GetChild(i).gameObject;
+            }
+        }
+        return null;
+	}
+
+	public void resetTower(){
+		health = originalHealth;
+		rateOfFire = originalRateOfFire;
+		fireTime = originalFireTime;
+	}
 }
 
 

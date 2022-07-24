@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Towers
   - Projectile
+  - Gauss
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Graphics
   - Enemies
   - Towers
-  - 
+  - Wall
   - 
   - 
   - 
