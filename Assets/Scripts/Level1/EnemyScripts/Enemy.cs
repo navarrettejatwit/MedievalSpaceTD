@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour, Product
     {
         if (tower != null)
         {
-            isMoving = tower.takeDamage(damage);
+            isMoving = true; //= tower.takeDamage(damage);
         }
         moving();
     }
@@ -95,7 +95,9 @@ public class Enemy : MonoBehaviour, Product
                 player.GetComponent<Player>().updateCash(this.reward);
                 hasGivenCash = true;
             }
-            this.gameObject.SetActive(false);
+
+            Destroy(this.gameObject);
+            //this.gameObject.SetActive(false);
         }
     }
 

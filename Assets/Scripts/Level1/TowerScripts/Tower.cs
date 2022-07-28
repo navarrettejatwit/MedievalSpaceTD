@@ -68,15 +68,16 @@ public class Tower : MonoBehaviour, Product
         }
     }
 
-    public bool takeDamage(int damage)
+    public void takeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
         {
-	        this.gameObject.SetActive(false);
-			return true;
+	        //this.gameObject.SetActive(false)
+	        Destroy(this.gameObject);
+			//return true;
         }
-		return false;
+		//return false;
     }
 
 	private GameObject getProjectile()
