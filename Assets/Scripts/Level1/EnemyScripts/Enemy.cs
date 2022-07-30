@@ -31,8 +31,8 @@ public class Enemy : MonoBehaviour, Product
     void Start()
     {
 		originalHealth = health;
-        Physics.IgnoreLayerCollision(1,5);
-		Physics.IgnoreLayerCollision(7,7);
+        /*Physics.IgnoreLayerCollision(1,5);
+		Physics.IgnoreLayerCollision(7,7);*/
     }
     
     void Update()
