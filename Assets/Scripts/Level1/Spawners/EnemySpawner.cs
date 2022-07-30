@@ -51,14 +51,14 @@ public class EnemySpawner : MonoBehaviour
         EnemyFactories[1] = new EnemyFactory(EnemyPrefab1, enemies);
         SpawnPoints = GameObject.FindGameObjectWithTag("EnemySpawnPoints").GetComponentsInChildren<Transform>();
         needSpawnPoint = true;
-        for(int k=0;k<MaxEnemies;k++){
-            int j = Random.Range(1,EnemyFactories.Length);
-            getSpawnPoint();
-            EnemyFactories[j].setSpawnPoint(SpawnPoint);
-            e = (Enemy) EnemyFactories[j].produce();
-            e.transform.rotation = Quaternion.Euler(new Vector3(0, 270, 90));
-            e.gameObject.SetActive(false);
-        }
+        //for(int k=0;k<MaxEnemies;k++){
+            //int j = Random.Range(1,EnemyFactories.Length);
+            //getSpawnPoint();
+            //EnemyFactories[j].setSpawnPoint(SpawnPoint);
+            //e = (Enemy) EnemyFactories[j].produce();
+            //e.transform.rotation = Quaternion.Euler(new Vector3(0, 270, 90));
+            //e.gameObject.SetActive(false);
+        //}
     }
     
     void Update()
@@ -83,14 +83,18 @@ public class EnemySpawner : MonoBehaviour
         if (spawnTime <= 0f && EnemyPerWave != 0)
         {
             getSpawnPoint();
-            temp = getEnemy();
-            if (temp != null)
-            {
-                temp.transform.position = new Vector3(SpawnPoint.position.x,SpawnPoint.position.y,SpawnPoint.position.z);
-                temp.transform.rotation = Quaternion.Euler(new Vector3(0, 270, 90));
-				temp.GetComponent<Enemy>().resetEnemy();
-                temp.gameObject.SetActive(true);
-            }
+            //temp = getEnemy();
+            //if (temp != null)
+            //{
+                //temp.transform.position = new Vector3(SpawnPoint.position.x,SpawnPoint.position.y,SpawnPoint.position.z);
+                //temp.transform.rotation = Quaternion.Euler(new Vector3(0, 270, 90));
+				//temp.GetComponent<Enemy>().resetEnemy();
+                //temp.gameObject.SetActive(true);
+            //}
+            int j = Random.Range(1, EnemyFactories.Length);
+            EnemyFactories[j].setSpawnPoint(SpawnPoint);
+            e = (Enemy) EnemyFactories[j].produce();
+            e.transform.rotation = Quaternion.Euler(new Vector3(0, 270, 90));
             spawnTime = timeBetween;
         }
         else

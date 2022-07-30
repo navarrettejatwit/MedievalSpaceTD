@@ -96,8 +96,9 @@ public class TowerSpawner : MonoBehaviour
                     int i = (int) objectHit.position.x;
                     int j = (int) objectHit.position.y;
                     bool notFilled = sellTower();
-                    hit.transform.gameObject.SetActive(false);
+                    //hit.transform.gameObject.SetActive(false);
                     player.GetComponent<Player>().updateCash(cashBack);
+                    Destroy(hit.transform.gameObject);
                     canSellTower = false;
                 }
             }
@@ -162,20 +163,20 @@ public class TowerSpawner : MonoBehaviour
 
     private void spawnTower(Transform coord)
     {
-        currentTower = getTowerFromAPool();
-        if(currentTower != null)
-        {
-            currentTower.transform.position = new Vector3(coord.position.x,coord.position.y,coord.position.z);
-            currentTower.transform.rotation = Quaternion.Euler(270f, 0f,0f);
-			currentTower.GetComponent<Tower>().resetTower();
-            currentTower.SetActive(true);
-        }
-        else
-        {
+        //currentTower = getTowerFromAPool();
+        //if(currentTower != null)
+        //{
+            //currentTower.transform.position = new Vector3(coord.position.x,coord.position.y,coord.position.z);
+            //currentTower.transform.rotation = Quaternion.Euler(270f, 0f,0f);
+			//currentTower.GetComponent<Tower>().resetTower();
+            //currentTower.SetActive(true);
+        //}
+        //else
+        //{
             TowerFactoryArray[towerType].setSpawnPoint(coord);
             Tower NewTower = (Tower) TowerFactoryArray[towerType].produce();
             NewTower.transform.rotation = Quaternion.Euler(270, 0, 0);
-        }
+        //}
         canBuildTower = false;
     }
 
