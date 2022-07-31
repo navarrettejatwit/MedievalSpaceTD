@@ -56,7 +56,7 @@ public class Map : MonoBehaviour
                 MapMatrix[i, j].transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
             }
         }
-        
+                                                                          
         Vector3 position = new Vector3((column - 1) / 2f, (row - 1) / 2f, -10);
         camera.transform.position = position;
         aspectRatio = camera.aspect;
